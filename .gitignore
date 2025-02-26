@@ -1,0 +1,5 @@
+# Ignore all checkpoint files
+FineTune/ckpts/
+
+# Ignore all wandb logs and cache files
+FineTune/wandb/
