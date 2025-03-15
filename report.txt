@@ -1,0 +1,15 @@
+First we Did Prompting Analysis on Reasoning Benchmark Datasets.
+Then SFT at differnt epoch at higher epochs to observer gradients.
+Then decided on 5 LR for epoch.
+Ran Evaluation of those SFT Models.
+Need to check like How many did thinking? 
+How many of them went info infinite look?
+Then BudgetForcing Issues, 6 Days for inference on 500 Samples.
+Some conclusion, its not effective to use Deepseek R1 reasoning models in any Application, as with less GPU, they will take a lot of time generating tokens. Sometimes even cross 16384 context window.
+Then Running R1 - Baseline i.e. Zero shot and no extra thinking.
+
+
+To Do:
+See GRPO
+Evaluate GRPO
+Implement Budget Forcing
