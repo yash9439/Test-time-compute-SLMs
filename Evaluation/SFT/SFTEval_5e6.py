@@ -21,7 +21,7 @@ dtype = None          # None for auto detection. Float16 for Tesla T4, V100, Bfl
 load_in_4bit = True   # Use 4bit quantization to reduce memory usage. Can be False.
 
 model, tokenizer = FastLanguageModel.from_pretrained(
-    model_name = "unsloth/Qwen2.5-1.5B-Instruct",
+    model_name = "NousResearch/Meta-Llama-3.1-8B-Instruct",
     max_seq_length = max_seq_length,
     dtype = dtype,
     load_in_4bit = load_in_4bit,
@@ -33,7 +33,7 @@ FastLanguageModel.for_inference(model)
 
 def process_problem(model_response, solution, tokenizer, model):
     # Last 100 tokens of the model response
-    model_response = model_response.split()[-100:]
+    model_response = " ".join(model_response.split()[-100:])
 
     messages = [
         {"role": "user", "content": f"Is the numerical answer in the text below equivalent to '{solution} ignoring formatting (like LaTeX)?\n\nText: {model_response}"},
@@ -66,7 +66,7 @@ def process_problem(model_response, solution, tokenizer, model):
 
 def process_problem_gpqa(model_response, expected_text, expected_option, tokenizer, model):
     # Last 100 tokens of the model response
-    model_response = model_response.split()[-100:]
+    model_response = " ".join(model_response.split()[-100:])
 
     messages = [
         {"role": "user", "content": f"Does the following text state that the answer is either option '{expected_option}' OR the text '{expected_text}'?  Consider variations in wording. Respond with 'YES' only if the text clearly indicates one of these as the answer, otherwise respond with 'NO'.\n\nText: {model_response}"},
