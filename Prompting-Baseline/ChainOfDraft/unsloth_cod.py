@@ -20,7 +20,7 @@ FastLanguageModel.for_inference(model)
 
 def process_problem(problem_text, tokenizer, model):
     messages = [
-        {"role": "user", "content": f"{problem_text}\nThink step by step, but only keep a minimum draft for each thinking step, with 5 words at most."},
+        {"role": "user", "content": f"{problem_text}\nThink step by step, but only keep a minimum draft for each thinking step, with 5 words at most. Give the Final Answer in the end."},
     ]
 
     # Create inputs with tokenization
@@ -51,7 +51,7 @@ def process_problem(problem_text, tokenizer, model):
 # Process AIME24 dataset with tqdm progress bar
 
 print("Processing AIME24 dataset...")
-df_aime24 = pd.read_csv("AIME24_test.csv")
+df_aime24 = pd.read_csv("../AIME24_test.csv")
 
 # Add tqdm progress bar (fix #2)
 responses = []
@@ -68,7 +68,7 @@ df_aime24.to_csv("aime24_COD.csv", index=False)
 # Process MATH-500 dataset with tqdm progress bar
 
 print("Processing MATH-500 dataset...")
-df_math500 = pd.read_csv("MATH-500_test.csv")
+df_math500 = pd.read_csv("../MATH-500_test.csv")
 
 # Add tqdm progress bar (fix #2)
 responses = []
@@ -85,7 +85,7 @@ df_math500.to_csv("math500_COD.csv", index=False)
 # Process GPQA dataset with tqdm progress bar
 
 print("Processing GPQA dataset...")
-df_gpqa = pd.read_csv("gpqa_main.csv")
+df_gpqa = pd.read_csv("../gpqa_main.csv")
 
 import random
 
